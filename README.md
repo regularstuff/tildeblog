@@ -13,10 +13,13 @@ Goal is to create a blog specialiazed for capturing "Today I Learned" topics.  M
  - single author (not a group blog)
  - installable django app
  - article tagging
+ - display latex using mathjax or similar
  - flexsearch with live update results (via htmx/alpine.js)
  - has draft queue
  - supports comments and has some spam filter/are you a human challenge
  - quick capture of "seed" from mobile / from discord channel.  So you can remind yourself to write up something you learn
+ - "heatmap" similar to github's day/week commit visualization, showing activity over time
+ - allow selective feature-by-feature visibility, perhaps by giving a prospective employer a key 
 
 ## future (spitballing)
 
@@ -24,11 +27,14 @@ Possible: create a "tildeblog network"  with an engine that discovers collection
 touch on similar topics as yours.  With the idea being you might be interested in "Today I Learned" stuff from people who've
 thought it worth mentioning certain things.  This would be most useful if there were a protocol not married to django, as
 presumably many people who don't want to run their own django server also learn worthwhile things.
+
+
+
+Feel free to sugges features in Github's "Issues" section.
  
 ## Contributing
 
 If you want to be a collaborator on this, message me (levintennine) in discord.
-
 
 
 
