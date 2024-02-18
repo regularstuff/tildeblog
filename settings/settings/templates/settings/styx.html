@@ -1,0 +1,18 @@
+{% extends "settings/base_generic.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block sidebar %}
+<h1>{{ sidebar.title }}</h1>
+<UL>
+    <li>item 1 in sidebar</li>
+    <li>item 2 in sidebar</li>
+</UL>
+{%  endblock %}
+{% block content %}
+<h1>{{ content.title }}</h1>
+<UL>
+    <li>item 1 in content</li>
+    <li>item 2 in content</li>
+</UL>
+{%  endblock %}
