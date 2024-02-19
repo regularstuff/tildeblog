@@ -1,5 +1,5 @@
-{% extends "settings/base_generic.html" %}
-
+{% extends "django_root/site_base.html" %}
+{% block page_body %}
 {% block title %}{{ section.title }}{% endblock %}
 
 {% block sidebar %}
@@ -16,3 +16,4 @@
     <li>item 2 in content</li>
 </UL>
 {%  endblock %}
+{% endblock %}
