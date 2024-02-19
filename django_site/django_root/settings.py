@@ -76,7 +76,7 @@ pg_db_name = os.environ["PG_DB_NAME"]
 pg_db_user = os.environ["PG_USER"]
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"postgres://{pg_user}:{pg_pwd}@{pg_server}/{pg_db_name}",
+        default=f"postgres://{pg_db_user}:{pg_pwd}@{pg_server}/{pg_db_name}",
         conn_max_age=600,
     )
 }
