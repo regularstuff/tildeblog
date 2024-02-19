@@ -7,6 +7,15 @@ Goal is to create a blog specialiazed for capturing "Today I Learned" topics.  M
  - "look what I can do" artifact to show an employer, 
  - "look what I did"  to show your manager at review time
  - "stash" technical items you've learned about so you can remind yourself
+
+## runs on render.com (90 day free trial)
+
+This applies to the branch "render"
+
+This repo is set up with render.yaml and render.sh to run on render.com
+That host lets you run postgres for 90 days. I don't know of a way to run 
+Django indefinitely for free.  You can probably serially run on AWS free
+tier (have to set up a new account every year.)
  
 ## requirements / spec
 

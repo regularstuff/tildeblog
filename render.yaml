@@ -1,3 +1,9 @@
+databases:
+  - name: tildeblog
+    plan: free
+    databaseName: tildeblogdb
+    user: tildeblog
+
 services:
   - type: web
     plan: free
