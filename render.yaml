@@ -13,7 +13,7 @@ services:
     startCommand: "cd django_site && python -m gunicorn django_root.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: django_root.settings
+        value: django_root.django_root
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
