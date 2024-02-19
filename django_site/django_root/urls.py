@@ -1,5 +1,5 @@
 """
-URL configuration for settings project.
+URL configuration for django_root project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -18,7 +18,4 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.styx, name='styx')
-]
+urlpatterns = [path("admin/", admin.site.urls), path("", views.styx, name="styx")]
