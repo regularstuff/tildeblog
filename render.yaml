@@ -6,7 +6,8 @@ services:
     buildCommand: "./render-build.sh"
     startCommand: "python -m gunicorn django_root.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
-
+      - key: DJANGO_SETTINGS_MODULE
+        value: django_root.settings
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
