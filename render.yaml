@@ -1,7 +1,7 @@
 services:
   - type: web
     plan: free
-    name: django_root
+    name: tildeblog
     runtime: python
     buildCommand: "./render-build.sh"
     startCommand: "cd django_site && python -m gunicorn django_root.asgi:application -k uvicorn.workers.UvicornWorker"
