@@ -4,7 +4,7 @@ services:
     name: django_root
     runtime: python
     buildCommand: "./render-build.sh"
-    startCommand: "python -m gunicorn django_root.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "cd django_site && python -m gunicorn django_root.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: django_root.settings
