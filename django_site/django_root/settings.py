@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-_6$)&nep4$y6kp92e9*whkwpl-=#onl@#*=%vc_1pe^w9n@2ys"
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -78,7 +78,7 @@ WSGI_APPLICATION = "django_root.wsgi.application"
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
     "default": dj_database_url.config(
-        default="postgresql://postgres:tildeblog@localhost:5432/tildeblogdb",
+        default=f"postgres://tildeblog:{os.environ['PG_PWD']}@dpg-cn9qip5jm4es73c62gh0-a/tildeblogdb",
         conn_max_age=600,
     )
 }
