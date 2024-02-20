@@ -1,4 +1,10 @@
 {% extends "django_root/site_base.html" %}
 {% block page_body %}
-    Here it is jacko
+    <form method="post" action="">
+{% csrf_token %}
+<table>
+{{learning_form}}
+</table>
+<input type="submit" value="Submit Form"/>
+</form>
 {% endblock %}
