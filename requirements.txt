@@ -2,3 +2,5 @@ Django >= 5.0.0, < 6.0.0
 whitenoise
 gunicorn
 uvicorn
+psycopg2-binary
+dj-database-url
