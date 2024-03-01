@@ -12,6 +12,10 @@ Goal is to create a blog specialized for capturing and presenting "Today I Learn
  - "look what I did"  to show your manager at review time
  - "stash" technical items you've learned about so you can remind yourself
 
+Here is a sketch of types of features that will appear on landing page:
+
+![image of landing page](https://github.com/regularstuff/tildeblog/sketch-landing-age.png)
+
 ## runs on render.com (90 day free trial til April 2024)
 
 This applies to the branch "render"
