@@ -1,20 +1,24 @@
 # tildeblog
   *Today I Learned - de blog*
 
-This is a learn-to-use-django project for the Python Study Central discord at https://discord.com/invite/6pVFMUEKxX
+This is a learn-to-use-django project for the [Python Study Central Discord](https://discord.com/invite/6pVFMUEKxX)
+In addition to Django, the project is about learning git and practicalities of deployment.
 
-Goal is to create a blog specialiazed for capturing "Today I Learned" topics.  Main intent is to create a:
+Contributions from any skill level are welcome.  Djanjo newbies are welcome to join
+voice discussions.  Coordination, meetups at this [Discord channel](https://discord.com/channels/1200518276023848970/1207695235313049610)
+
+Goal is to create a blog specialized for capturing and presenting "Today I Learned" topics.  Main intent is to create a:
  - "look what I can do" artifact to show an employer, 
  - "look what I did"  to show your manager at review time
  - "stash" technical items you've learned about so you can remind yourself
 
-## runs on render.com (90 day free trial)
+## runs on render.com (90 day free trial til April 2024)
 
 This applies to the branch "render"
 
 This repo is set up with render.yaml and render.sh to run on render.com
-That host lets you run postgres for 90 days. I don't know of a way to run 
-Django indefinitely for free.  You can probably serially run on AWS free
+That host lets you run postgres for 90 days. I don't know of any hosting provider 
+that lets you run Django indefinitely for free.  You can probably serially run on AWS free
 tier (have to set up a new account every year.)
  
 ## requirements / spec
