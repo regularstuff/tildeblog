@@ -14,7 +14,7 @@ Goal is to create a blog specialized for capturing and presenting "Today I Learn
 
 Here is a sketch of types of features that will appear on landing page:
 
-![image of landing page](https://github.com/regularstuff/tildeblog/sketch-landing-age.png)
+![image of landing page](https://github.com/regularstuff/tildeblog/blob/main/sketch-landing-page.png)
 
 ## runs on render.com (90 day free trial til April 2024)
 
