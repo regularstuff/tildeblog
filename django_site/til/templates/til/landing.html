@@ -1,0 +1,25 @@
+{% extends "til/base.html" %}
+{% include static %}
+
+{% block body %}
+    <body id="landing-body">
+    <div class="sidebar">
+        <div class="facets"></div>
+    </div>
+    <div class="learnings">
+        {% for x in learnings %}
+            <div class="learnt-thing">
+            <!-- take out inline styling -->
+            <div class="learnt-headline" style="display: inline;">
+            <a href="{{ x.url }}">{{  x.headline }}</a>
+            </div>
+        <div class="learning_tags" style="display: inline;">
+            {% for tag in x.tags %}
+                <a href="/til/tags/{{ tag  }}">{{ tag }}</a>,
+            {% endfor %}
+        </div>
+            </div>
+        {% endfor %}
+    </div>
+    </body>
+{% endblock %}

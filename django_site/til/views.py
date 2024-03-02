@@ -3,6 +3,22 @@ from django.shortcuts import render
 
 from .forms import LearningForm
 
+from .models import Learned
+
+
+def landing_page(request):
+    mylearnings = Learned.objects.all()
+    learnt_things = [
+        {"headline": x.title, "url": f"https://x/{x.id}", "tags": [1, 2, 3]}
+        for x in mylearnings
+    ]
+
+    return render(
+        request,
+        "til/landing.html",
+        context={"title": "ABC: Always Be Learning", "learnings": learnt_things},
+    )
+
 
 def learning_data_entry(request):
     if request.method == "GET":
