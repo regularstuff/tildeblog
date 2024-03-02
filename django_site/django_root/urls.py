@@ -18,10 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django_root import views
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.styx, name="styx"),
     path("til/", include("til.urls")),
-    path("", views.styx, name="styx"),
+    path("", views.til_redirect, name="til_redirect"),
 ]

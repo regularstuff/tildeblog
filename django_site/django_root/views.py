@@ -1,4 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+
+def til_redirect(request):
+    return HttpResponseRedirect("/til")
 
 
 def styx(request):
