@@ -2,7 +2,7 @@
 
   *Today I Learned - de blog*
 
-| [How to run on local](#run_on_local) | [Project Goals](#project-goals) |
+| [How to run on local](#run-on-local) | [Project Goals](#project-goals) |
 
 This is a learn-to-use-django project for the [Python Study Central Discord](https://discord.com/invite/6pVFMUEKxX)
 In addition to Django, the project is about learning git and practicalities of deployment.  Contributions from any skill level are welcome.  
@@ -27,7 +27,11 @@ Here is a sketch of types of features that will appear on landing page:
 - Create and activate virtual environment if your IDE does not do that for you
 - Install requirements if your IDE doesn't do it for you (at the shell, run `pip install -r requirements.txt`)
 - Set an environment variable, DJANGO_SETTINGS_MODULE.  Set it to "django_root.laptop_settings".
-- This project deliberately ships "not ready to use" with respect to that Environment Variable, see issue 6 on github.  If you don't want to bother with environment variable you can change code in manage.py to load "django_root.laptop_settings.py"
+  - This project deliberately ships "not ready to use" with respect to that Environment Variable, see issue 6 on github.  If you don't want to bother with environment variable you can change code in manage.py to load "django_root.laptop_settings.py"
+- run `manage.py migrate`
+- run `manage.py runserver`
+
+You should now be able to browse to it at http://localhost:8000
 
 
 ## runs on render.com (90 day free trial til April 2024)
