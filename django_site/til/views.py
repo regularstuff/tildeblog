@@ -4,6 +4,28 @@ from django.shortcuts import render
 from .forms import LearningForm
 
 
+def landing_page(request):
+    return render(
+        request,
+        "til/landing.html",
+        context={
+            "title": "ABC - Always be learning",
+            "learnings": [
+                {
+                    "url": "https://x.y",
+                    "headline": "placheholder 1",
+                    "tags": ["tag1", "tag2", "tag3"],
+                },
+                {
+                    "url": "https://xx.yy",
+                    "headline": "placheholder 2",
+                    "tags": ["tag11", "tag12", "tag13"],
+                },
+            ],
+        },
+    )
+
+
 def learning_data_entry(request):
     if request.method == "GET":
         context = {"page_title": "Learning Data Entry Form"}
