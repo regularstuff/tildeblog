@@ -3,26 +3,20 @@ from django.shortcuts import render
 
 from .forms import LearningForm
 
+from .models import Learned
+
 
 def landing_page(request):
+    mylearnings = Learned.objects.all()
+    learnt_things = [
+        {"headline": x.title, "url": f"https://x/{x.id}", "tags": [1, 2, 3]}
+        for x in mylearnings
+    ]
+
     return render(
         request,
         "til/landing.html",
-        context={
-            "title": "ABC - Always be learning",
-            "learnings": [
-                {
-                    "url": "https://x.y",
-                    "headline": "placheholder 1",
-                    "tags": ["tag1", "tag2", "tag3"],
-                },
-                {
-                    "url": "https://xx.yy",
-                    "headline": "placheholder 2",
-                    "tags": ["tag11", "tag12", "tag13"],
-                },
-            ],
-        },
+        context={"title": "ABC: Always Be Learning", "learnings": learnt_things},
     )
 
 
