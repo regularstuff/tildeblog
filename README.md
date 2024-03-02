@@ -2,7 +2,7 @@
 
   *Today I Learned - de blog*
 
-| [How to run on local](#run-on-local) | [Project Goals](#project-goals) |
+| [How to run on local](#running-on-local) | [Project Goals](#project-goals) |
 
 This is a learn-to-use-django project for the [Python Study Central Discord](https://discord.com/invite/6pVFMUEKxX)
 In addition to Django, the project is about learning git and practicalities of deployment.  Contributions from any skill level are welcome.  
