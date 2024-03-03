@@ -13,5 +13,5 @@ def learning_data_entry(request):
         learning_form = LearningForm(request.POST)
         if learning_form.is_valid():
             learning_form.save()
-            return HttpResponseRedirect("")
+            return render(request, 'til/post_thanks.html')
     return HttpResponseRedirect("")
