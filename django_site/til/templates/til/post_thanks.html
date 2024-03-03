@@ -1,8 +1,8 @@
 {% extends "django_root/site_base.html" %}
-
+{%  include url %}
 {% block page_body %}
 
     <h2>TEST - Thank you for posting your submission</h2>
     <p><a href="/">Back to Main page</a></p>
-    <p><a href="/til">Resubmit another post!</a></p>
+    <p><a href={% url 'til_de' %}>Submit another post!</a></p>
 {% endblock %}
