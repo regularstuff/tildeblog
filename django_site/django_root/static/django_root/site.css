@@ -46,7 +46,15 @@ section {
     padding: 20px;
 }
 
-.main-links a {
+.learnt-headline {
+    display: inline-block;
+}
+
+.learning-tags {
+        display: inline-block;
+}
+
+.learnt-headline a {
     font-size: 1.2rem;
     display: block;
     color: cadetblue;
@@ -58,7 +66,7 @@ section {
     border-bottom: 2px solid #5c5c5c;
 }
 
-.main-links a:hover {
+.learnt-headline a:hover {
     color: rgb(122, 188, 190);
 }
 
