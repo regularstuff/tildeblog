@@ -9,7 +9,7 @@
         {% for x in learnings %}
             <div class="learnt-thing">
             <div class="learnt-headline">
-            <a href="{{ x.url }}">{{  x.headline }}</a>
+            <a href="{% url 'til_show' x.id %}">{{ x.headline }}</a>
             </div>
         <div class="learning-tags">
             {% for tag in x.tags %}

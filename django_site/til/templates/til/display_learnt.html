@@ -1,0 +1,13 @@
+{% extends "til/base.html" %}
+{% block page_body %}
+    <div class="learnt-title">TITLE {{ learnt_title }}</div>
+    <div class="learnt-tldr">TLDR: {{ learnt_tldr }}</div>
+    <div class="learnt-content">Today I learned: {{ learnt_content }}</div>
+    <div class="learnt-tag-list">{% for tag in tags %}
+        <div class="learnt-tag">{{ tag }}</div>
+    {% endfor %}
+    </div>
+<div class="navigation">
+<div class="home_link"><a href="{% url 'til_landing' %}">Home</a></div>
+</div>
+{% endblock %}
