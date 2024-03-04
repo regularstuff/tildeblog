@@ -8,6 +8,10 @@ This is a learn-to-use-django project for the [Python Study Central Discord](htt
 In addition to Django, the project is about learning git and practicalities of deployment.  Contributions from any skill level are welcome.  
 Djanjo newbies are welcome to join voice discussions.  Coordination, meetups at this [Discord channel](https://discord.com/channels/1200518276023848970/1207695235313049610).
 
+You can see it running on Render, and can add stuff to it.  The styling is **very** rough as of March 4.  Render
+"spins down" free-plan websites if they aren't accessed frequently, so it is likely to take a minute or so
+to come up if you look at it.   It is at https://tildeblog.onrender.com.
+
 ## Project Goals
 Goal is to create a blog specialized for capturing and presenting "Today I Learned" topics.  Main intent is to create a:
  - "look what I can do" artifact to show an employer, 
