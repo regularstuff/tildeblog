@@ -1,7 +1,6 @@
 {% extends "til/base.html" %}
 {% include static %}
-
-{% block body %}
+{% block page_body %}
     <body id="landing-body">
     <div class="sidebar">
         <div class="facets"></div>
@@ -9,11 +8,10 @@
     <div class="learnings">
         {% for x in learnings %}
             <div class="learnt-thing">
-            <!-- take out inline styling -->
-            <div class="learnt-headline" style="display: inline;">
+            <div class="learnt-headline">
             <a href="{{ x.url }}">{{  x.headline }}</a>
             </div>
-        <div class="learning_tags" style="display: inline;">
+        <div class="learning-tags">
             {% for tag in x.tags %}
                 <a href="/til/tags/{{ tag  }}">{{ tag }}</a>,
             {% endfor %}

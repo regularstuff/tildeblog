@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>{{ title }}</title>
+
+    {% load static %}
+<link rel="stylesheet" href="{% static 'django_root/site.css' %}">
 </head>
-{% block body %}
-{% endblock %}
+<body>
+{% block page_body %}{% endblock %}
+</body>
+
 </html>
