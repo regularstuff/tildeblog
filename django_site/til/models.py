@@ -8,6 +8,10 @@ class Author(models.Model):
 class LearningTag(models.Model):
     name = models.CharField(max_length=20)
 
+    # Function here will make it show STR Name vs object number in admin view
+    def __str__(self):
+        return self.name
+
 
 class Learned(models.Model):
     title = models.CharField(max_length=200)
@@ -30,3 +34,7 @@ class Learned(models.Model):
         related_name="modifying_author",
     )
     tags = models.ManyToManyField(LearningTag)
+
+     # Function here will make it show STR Name vs object number in admin view
+    def __str__(self):
+        return self.title
