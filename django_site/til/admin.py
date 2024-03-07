@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Learned, LearningTag
+
+# this will add the post link on the admin page
+admin.site.register(Learned)
+admin.site.register(LearningTag)
