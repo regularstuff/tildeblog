@@ -13,7 +13,6 @@ python manage.py migrate
 
 # to control this you set environment variable in render control panel
 
-if [[ "$CREATE_SUPERUSER"=YES ]] ;
-then
-  python manage.py createsuperuser --no-input
+if [[ "$CREATE_SUPERUSER" = "YES" ]] ; then
+    python manage.py createsuperuser --no-input
 fi
