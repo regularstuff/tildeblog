@@ -8,13 +8,15 @@ This is a learn-to-use-django project for the [Python Study Central Discord](htt
 In addition to Django, the project is about learning git and practicalities of deployment.  Contributions from any skill level are welcome.  
 Djanjo newbies are welcome to join voice discussions.  Coordination, meetups at this [Discord channel](https://discord.com/channels/1200518276023848970/1207695235313049610).
 
+[New to Django?](#if-you-are-new-to-django) | [New to Github Collaboration/PRs?](#if-you-are-new-to-github) | [New to Git?](#if-you-are-new-to-git)  | [New to Python?](#if-you-are-new-to-python) 
+
 You can see it running on Render, and can add stuff to it.  The styling is **very** rough as of March 4.  Render
 "spins down" free-plan websites if they aren't accessed frequently, so it is likely to take a minute or so
 to come up if you look at it.   It is at https://tildeblog.onrender.com.
 
 ## Project Goals
 Goal is to create a blog specialized for capturing and presenting "Today I Learned" topics.  Main intent is to create a:
- - "look what I can do" artifact to show an employer, 
+ - "look what I can do" artifact to show an employer 
  - "look what I did"  to show your manager at review time
  - "stash" technical items you've learned about so you can remind yourself
 
@@ -75,7 +77,25 @@ Feel free to sugges features in Github's "Issues" section.
 
 If you want to be a collaborator on this, message me (levintennine) in discord.
 
+### If you are new to Django
 
+Tbd, let's talk about what is useful here
 
+### If you are new to Github
 
+Pull requests are confusing and that is the main way to collaborate.  [More, looking for inputon what to put here]
+
+### If you are new to Git
+
+You have to know a bit about git to work with other software developers in the 2020s.  If you are reading sourcecode
+on the github website, or if you are using "zip" to get repositories, you have to learn how to clone, commit and 
+push before you can work productively with others.  We can help you, but there is a good amount of study, too.
+
+### If you are new to Python
+
+Uh-oh.  Depending on your learning style, jumping in with Django is likely to be a little bewildering.  Besides 
+using a lot of common python programing, Django involves a lot of what seems like "magic".  It is a 20 year old framework that
+has evolved a few patterns that are practically domain-specific-languages.  You're welcome to contribute and
+learn with us.  If you find it overwhelming though, remember a lot of the detail is Django-specific, it *doesn't*
+mean python is too hard for you.
 

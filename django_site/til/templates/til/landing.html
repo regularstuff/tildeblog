@@ -2,22 +2,62 @@
 {% include static %}
 {% block page_body %}
     <body id="landing-body">
-    <div class="sidebar">
-        <div class="facets"></div>
-    </div>
-    <div class="learnings">
+    <main>
+    <aside class="left">
+        <ul>
+            <li>
+                <span>
+                    <input type="checkbox" name="long_reads" id="long-reads-label">
+                    <label for="long-reads-label">Long Reads</label>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <input type="checkbox" name="recent" id="recent-label">
+                    <label for="recent-label">Recent</label>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <input type="checkbox" name="data_modeling" id="data-modeling-label">
+                    <label for="data-modeling-label">Data Modeling</label>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <input type="checkbox" name="elasticSearch" id="elasticsearch-label">
+                    <label for="elasticsearch-label">ElasticSearch</label>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <input type="checkbox" name="serialization" id="serialization-label">
+                    <label for="serialization-label">Serialization</label>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <input type="checkbox" name="rust" id="rust-label">
+                    <label for="rust-label">Rust</label>
+                </span>
+            </li>
+        </ul>
+    </aside>
+    <section class="main-links">
+    <ul class="learnings-list">
         {% for x in learnings %}
-            <div class="learnt-thing">
-            <div class="learnt-headline">
-            <a href="{% url 'til_show' x.id %}">{{ x.headline }}</a>
-            </div>
-        <div class="learning-tags">
+            <li>
+                <p class="read-length">placeholder</p>
+            <p class="read"><a href="{% url 'til_show' x.id %}">{{ x.headline }}</a></p>
+        <p class="read">
             {% for tag in x.tags %}
                 <a href="/til/tags/{{ tag  }}">{{ tag }}</a>,
             {% endfor %}
-        </div>
-            </div>
+        </p>
+            </li>
         {% endfor %}
-    </div>
+    </ul>
+    </section>
+    <main>
     </body>
 {% endblock %}
