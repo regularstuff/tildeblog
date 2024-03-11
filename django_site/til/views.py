@@ -44,15 +44,6 @@ def landing_page(request):
     )
 
 
-def add_tags(delimited_tags, learnt_id):
-    learnt = Learned.objects.get(id=learnt_id)
-    helper = TagHelper(delim=",")
-    for cleaned_tag in helper.split_tags(delimited_tags):
-        tag_id = helper.get_new_or_existing_tag_id(cleaned_tag)
-        learnt.tags.add(tag_id)
-    learnt.save()
-
-
 def learning_data_entry(request):
     if request.method == "GET":
         context = {
@@ -66,6 +57,7 @@ def learning_data_entry(request):
             learnt_object = learning_form.save()
             delimited_tags = learning_form.cleaned_data["delimited_tag_field"].strip()
             if delimited_tags:
-                add_tags(delimited_tags, learnt_object.id)
+                helper = TagHelper(delim=",")
+                helper.tags = delimited_tags(delimited_tags, learnt_object.id)
             return render(request, "til/post_thanks.html")
     return HttpResponseRedirect("")

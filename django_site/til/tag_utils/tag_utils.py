@@ -1,4 +1,4 @@
-from til.models import LearningTag
+from til.models import LearningTag, Learned
 
 
 class TildeblogValueError(ValueError):
@@ -16,6 +16,19 @@ class TagHelper:
         # TODO make delim default from app settings
         self.delim = delim
         self.downcase_all = True
+
+    def add_tags_to_learnt(self, delimited_tags, learnt_id):
+        learnt = Learned.objects.get(id=learnt_id)
+        helper = TagHelper(delim=",")
+        for cleaned_tag in helper.split_tags(delimited_tags):
+            tag_id = helper.get_new_or_existing_tag_id(cleaned_tag)
+            learnt.tags.add(tag_id)
+        learnt.save()
+
+    def tags_as_delim_string(self, learnt_id: int):
+        """Returns a delimited string of tags in no defined order"""
+        learnt_item = Learned.objects.get(id=learnt_id)
+        return ",".join([_.name for _ in learnt_item.tags.all()])
 
     def split_tags(self, tagstring: str) -> list:
         """

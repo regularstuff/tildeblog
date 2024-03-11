@@ -1,6 +1,5 @@
 from django.test import TestCase
 
-
 from til.tag_utils import TagHelper
 
 
@@ -42,7 +41,24 @@ class TagTests(TestCase):
         self.assertIn("git", result)
         self.assertIn("got", result)
 
-    def test_gets_a_tag(self):
+    def test_get_same_tag_twice_gets_same_id(self):
         helper = TagHelper(delim=",")
-        result = helper.get_new_or_existing_tag_id("foo")
-        self.assertGreater(result, 0)
+        result_foo = helper.get_new_or_existing_tag_id("foo")
+        self.assertGreater(result_foo, 0)
+        result_bar = helper.get_new_or_existing_tag_id("bar")
+        self.assertNotEquals(result_foo, result_bar)
+        result_foo_2 = helper.get_new_or_existing_tag_id("foo")
+        self.assertEqual(result_foo, result_foo_2)
+
+    def test_tags_as_delimited_string(self):
+        helper = TagHelper(delim=",")
+        from til.models import Learned
+
+        learnt = Learned.objects.create(title="foo", tldr="foo", content="foo")
+        # add tags to an object
+        helper.add_tags_to_learnt("foo, fee, sup", learnt.id)
+        # create the control list
+        tags = helper.split_tags("foo, fee, sup")
+        # get the list under test
+        tags_from_learnt = helper.split_tags(helper.tags_as_delim_string(learnt.id))
+        self.assertSetEqual(set(tags), set(tags_from_learnt))
