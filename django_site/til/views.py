@@ -5,6 +5,8 @@ from .forms import LearningForm
 
 from .models import Learned
 
+from .tag_utils import TagHelper
+
 
 def show(request, learnt_id):
     learnt = Learned.objects.get(id=learnt_id)
@@ -26,10 +28,15 @@ def show(request, learnt_id):
 
 def landing_page(request):
     mylearnings = Learned.objects.all()
-    learnt_things = [
-        {"headline": x.title, "id": x.id, "tags": [1, 2, 3]} for x in mylearnings
-    ]
-
+    learnt_things = []
+    for learnt in mylearnings:
+        headline = learnt.title
+        tag_id = learnt.id
+        tags = []
+        for tag in learnt.tags.all():
+            tags.append(tag.name)
+        item = {"headline": headline, "id": tag_id, "tags": tags}
+        learnt_things.append(item)
     return render(
         request,
         "til/landing.html",
@@ -37,14 +44,28 @@ def landing_page(request):
     )
 
 
+def add_tags(delimited_tags, learnt_id):
+    learnt = Learned.objects.get(id=learnt_id)
+    helper = TagHelper(delim=",")
+    for cleaned_tag in helper.split_tags(delimited_tags):
+        tag_id = helper.get_new_or_existing_tag_id(cleaned_tag)
+        learnt.tags.add(tag_id)
+    learnt.save()
+
+
 def learning_data_entry(request):
     if request.method == "GET":
-        context = {"page_title": "Learning Data Entry Form"}
-        context["learning_form"] = LearningForm()
+        context = {
+            "page_title": "Learning Data Entry Form",
+            "learning_form": LearningForm(),
+        }
         return render(request, template_name="til/learning.html", context=context)
     if request.method == "POST":
         learning_form = LearningForm(request.POST)
         if learning_form.is_valid():
-            learning_form.save()
+            learnt_object = learning_form.save()
+            delimited_tags = learning_form.cleaned_data["delimited_tag_field"].strip()
+            if delimited_tags:
+                add_tags(delimited_tags, learnt_object.id)
             return render(request, "til/post_thanks.html")
     return HttpResponseRedirect("")

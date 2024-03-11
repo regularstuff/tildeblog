@@ -1,6 +1,16 @@
 from til.models import LearningTag
 
 
+class TildeblogValueError(ValueError):
+    def __init__(self, message):
+        super(TildeblogValueError, self).__init__(message)
+
+
+class TildeblogRuntimeError(RuntimeError):
+    def __init__(self, message):
+        super(TildeblogRuntimeError, self).__init__(message)
+
+
 class TagHelper:
     def __init__(self, delim=","):
         # TODO make delim default from app settings
@@ -23,23 +33,16 @@ class TagHelper:
         """
         Return the id for a tag.  If it doesn't exist already, create it.
         :param tagstring: valid string, should already be cleaned via split_tags
-        :return:
+        :return: the id of the tag
+        This wraps django object Manager get_or_create method to return just the id
+        and raise an exception if the tag isn't cleaned beforehand
         """
         first_tag = self.split_tags(tagstring)[0]
         if first_tag != tagstring:
-            raise ValueError(f"tagstring {tagstring} is not a valid tag")
+            raise TildeblogValueError(f"tagstring {tagstring} is not a valid tag")
         try:
-            return LearningTag.objects.get(name__exact=first_tag)
-        except LearningTag.DoesNotExist:
-            try:
-                obj = LearningTag.objects.create(name=tagstring)
-                return obj.id
-            except Exception as InsertFailure:
-                # conceivably it got insterted in the meantime
-                try:
-                    return LearningTag.objects.get(name__exact=first_tag)
-                except Exception as e:
-                    raise RuntimeError(
-                        f"Unable to get or create {tagstring}:\n{InsertFailure} on attempted insert and"
-                        f"{e} on retried get."
-                    )
+            return LearningTag.objects.get_or_create(name=tagstring)[0].id
+        except Exception as e:
+            raise TildeblogRuntimeError(
+                f"Excetion while trying to add {tagstring} to tags. \n:{e}"
+            )
