@@ -3,6 +3,7 @@ settings for django_root project.
 
 This is the site-wide settings file, with variables for render.com
 """
+import os
 from pathlib import Path
 
 # dj_database_url -- for render.com -- pulls postgres config from environment variables
@@ -36,6 +37,10 @@ INSTALLED_APPS = [
     "til",
 ]
 
+if "DEBUG_TOOLBAR" in os.environ:
+    INSTALLED_APPS.append("debug_toolbar")
+
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -45,6 +50,12 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if "DEBUG_TOOLBAR" in os.environ:
+    MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+    INTERNAL_IPS = [
+        "127.0.0.1",
+    ]
 
 ROOT_URLCONF = "django_root.urls"
 
