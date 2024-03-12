@@ -15,7 +15,6 @@ def show(request, learnt_id):
     page_title = "placeholder123"
     tldr = learnt.tldr
     tags = learnt.tags
-    id = learnt.id
     context = {
         "learnt_id": learnt_id,
         "learnt_title": title,
@@ -48,11 +47,16 @@ def landing_page(request):
 
 def learning_data_entry(request, learnt_id=None):
     learnt = None
-    if learnt_id != None:
+    tag_string = ""
+    if learnt_id is not None:
         learnt = Learned.objects.get(id=learnt_id)
+        tag_helper = TagHelper(delim=",")
+        tag_string = tag_helper.tags_as_delim_string(learnt.id)
     if request.method == "GET":
         context = {"page_title": "Learning Data Entry Form"}
-        context["learning_form"] = LearningForm(instance=learnt)
+        context["learning_form"] = LearningForm(
+            instance=learnt, initial={"delimited_tag_field": tag_string}
+        )
         return render(request, template_name="til/learning.html", context=context)
     if request.method == "POST":
         learning_form = LearningForm(request.POST, instance=learnt)
@@ -61,6 +65,8 @@ def learning_data_entry(request, learnt_id=None):
             delimited_tags = learning_form.cleaned_data["delimited_tag_field"].strip()
             if delimited_tags:
                 helper = TagHelper(delim=",")
-                helper.tags = delimited_tags(delimited_tags, learnt_object.id)
+                helper.tags = helper.set_tags_on_learnt(
+                    delimited_tags, learnt_object.id
+                )
             return render(request, "til/post_thanks.html")
     return HttpResponseRedirect("")

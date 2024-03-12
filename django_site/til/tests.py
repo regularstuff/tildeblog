@@ -56,7 +56,7 @@ class TagTests(TestCase):
 
         learnt = Learned.objects.create(title="foo", tldr="foo", content="foo")
         # add tags to an object
-        helper.add_tags_to_learnt("foo, fee, sup", learnt.id)
+        helper.set_tags_on_learnt("foo, fee, sup", learnt.id)
         # create the control list
         tags = helper.split_tags("foo, fee, sup")
         # get the list under test

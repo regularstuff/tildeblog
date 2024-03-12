@@ -1,4 +1,5 @@
 from til.models import LearningTag, Learned
+from django.db import transaction
 
 
 class TildeblogValueError(ValueError):
@@ -17,12 +18,15 @@ class TagHelper:
         self.delim = delim
         self.downcase_all = True
 
-    def add_tags_to_learnt(self, delimited_tags, learnt_id):
+    def set_tags_on_learnt(self, delimited_tags, learnt_id):
         learnt = Learned.objects.get(id=learnt_id)
         helper = TagHelper(delim=",")
-        for cleaned_tag in helper.split_tags(delimited_tags):
-            tag_id = helper.get_new_or_existing_tag_id(cleaned_tag)
-            learnt.tags.add(tag_id)
+        with transaction.atomic():
+            for oldtag in learnt.tags.all():
+                learnt.tags.remove(oldtag)
+            for cleaned_tag in helper.split_tags(delimited_tags):
+                tag_id = helper.get_new_or_existing_tag_id(cleaned_tag)
+                learnt.tags.add(tag_id)
         learnt.save()
 
     def tags_as_delim_string(self, learnt_id: int):
