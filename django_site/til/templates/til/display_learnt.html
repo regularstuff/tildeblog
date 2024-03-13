@@ -1,7 +1,7 @@
 {% extends "django_root/site_base.html" %}
 {% block page_body %}
 
-{% comment %} <form action = "{% url 'til_de' %}" method= "post"> {% endcomment %}
+    <form action="{% url 'til:til_de' %}" method="post">
     <div class="learnt-title">TITLE {{ learnt_title }}</div>
     <div class="learnt-tldr">TLDR: {{ learnt_tldr }}</div>
     <div class="learnt-content">Today I learned: {{ learnt_content }}</div>
@@ -10,9 +10,9 @@
     {% endfor %}
     </div>
 
-<button> <a href="{% url 'til_de_id' learnt_id %}"> Edit </a></button>
+        <button><a href="{% url 'til:til_de_id' learnt_id %}"> Edit </a></button>
 </form>
 <div class="navigation">
-<div class="home_link"><a href="{% url 'til_landing' %}">Home</a></div>
+    <div class="home_link"><a href="{% url 'til:til_landing' %}">Home</a></div>
 </div>
 {% endblock %}

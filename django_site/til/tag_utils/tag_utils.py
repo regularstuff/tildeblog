@@ -1,5 +1,6 @@
 from til.models import LearningTag, Learned
 from django.db import transaction
+from django.db.models.query import QuerySet
 
 
 class TildeblogValueError(ValueError):
@@ -40,6 +41,10 @@ class TagHelper:
         :param tagstring: input string
         :return: the list of tags as strings
         """
+        if tagstring is None:
+            return []
+        if tagstring.strip() == "":
+            return []
         candidate_tags = tagstring.split(self.delim)
         no_empties = [x.strip() for x in candidate_tags if x.strip()]
         if self.downcase_all:
@@ -63,3 +68,10 @@ class TagHelper:
             raise TildeblogRuntimeError(
                 f"Excetion while trying to add {tagstring} to tags. \n:{e}"
             )
+
+    def get_learnt_items_with_tag(self, tag: str):
+        return Learned.objects.filter(tags__name=tag)
+
+    def get_fuzzy_learnt_items_by_tag(self, tag) -> QuerySet:
+        tag = self.split_tags(tag)[0]  # normalize it
+        return Learned.objects.filter(tags__name__contains=tag).distinct()
