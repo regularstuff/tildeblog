@@ -1,10 +1,15 @@
 from django.test import TestCase, RequestFactory
+from django.shortcuts import reverse
 
 from til.tag_utils import TagHelper
 
 from til.views import landing_page
 
 from til.models import Learned
+
+
+def create_learned_object(title="foo", tldr="foo", content="foo"):
+    return Learned.objects.create(title=title, tldr=tldr, content=content)
 
 
 class TagTests(TestCase):
@@ -132,3 +137,19 @@ class TagTests(TestCase):
         result = landing_page(request, tagstring=match_earth)
         self.assertNotContains(result, "titleAirFire")
         self.assertContains(result, "titleEarthWater")
+
+    def test_filtering_site_at_tagged_url(self):
+        """
+        when you go to til/tagged/bananan you should get
+        a list of tags like banana
+        """
+        one = create_learned_object("test_title_one", "tldr+one", "contentone")
+        two = create_learned_object("test_title_two", "tldr+two", "contenttwo")
+        helper = TagHelper()
+        helper.set_tags_on_learnt("foo, fee, sup", one.id)
+        helper.set_tags_on_learnt("foo, fee, sup", two.id)
+        url = reverse("til:til_show_tagged", kwargs={"tagstring": "foo"})
+        response = self.client.get(url)
+        self.assertContains(response, "test_title_one")
+        self.assertContains(response, "test_title_two")
+        self.assertNotContains(response, "test_title_three")

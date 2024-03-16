@@ -71,13 +71,13 @@
                 <p class="read"><a href="{% url 'til:til_show' x.id %}">{{ x.headline }}</a></p>
         <p class="read">
             {% for tag in x.tags %}
-                <a href="/til/tags/{{ tag  }}">{{ tag }}</a>,
+                <a href="{% url "til:til_show_tagged" tagstring=tag %}">{{ tag }}</a></a>,
             {% endfor %}
         </p>
             </li>
         {% endfor %}
     </ul>
     </section>
-    <main>
+    </main>
     </body>
 {% endblock %}
