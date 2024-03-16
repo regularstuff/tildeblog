@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 
 from .forms import LearningForm
 
@@ -27,22 +27,41 @@ def show(request, learnt_id):
     return render(request, template_name="til/display_learnt.html", context=context)
 
 
-def landing_page(request):
-    mylearnings = Learned.objects.all()
-    learnt_things = []
-    for learnt in mylearnings:
-        headline = learnt.title
-        tag_id = learnt.id
-        tags = []
-        for tag in learnt.tags.all():
-            tags.append(tag.name)
-        item = {"headline": headline, "id": tag_id, "tags": tags}
-        learnt_things.append(item)
-    return render(
-        request,
-        "til/landing.html",
-        context={"title": "ABC: Always Be Learning", "learnings": learnt_things},
-    )
+def landing_page(request, tagstring: str = ""):
+    if request.method == "GET":
+        helper = TagHelper(delim=",")
+        tags = helper.split_tags(tagstring)
+        filtered_flag = False
+        if len(tags) > 0:
+            mylearnings = helper.get_fuzzy_learnt_items_by_tag(tags[0])
+            filtered_flag = True
+        else:
+            mylearnings = Learned.objects.all()
+        learnt_things = []
+        for learnt in mylearnings:
+            headline = learnt.title
+            tag_id = learnt.id
+            tags = []
+            for tag in learnt.tags.all():
+                tags.append(tag.name)
+            item = {"headline": headline, "id": tag_id, "tags": tags}
+            learnt_things.append(item)
+        return render(
+            request,
+            "til/landing.html",
+            context={"title": "ABC: Always Be Learning", "learnings": learnt_things},
+        )
+    elif request.method == "POST":
+        tag = request.POST.get("tag-input")
+        # TODO this is happy path, handle it if we got a post with bad vals
+        if len(tag.strip()) > 0:
+            return HttpResponseRedirect(
+                reverse("til:til_show_tagged", kwargs={"tagstring": tag})
+            )
+        else:
+            return HttpResponseRedirect(reverse("til:til_landing"))
+    else:
+        raise ValueError(f"I don't understand how I got {request.method=}")
 
 
 def learning_data_entry(request, learnt_id=None):

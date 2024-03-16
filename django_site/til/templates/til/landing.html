@@ -1,8 +1,27 @@
 {% extends "til/base.html" %}
 {% include static %}
 {% block page_body %}
-    <body id="landing-body">
+    <body id="landing-body" xmlns="http://www.w3.org/1999/html">
+
+    <div>
+        <form action="{% url 'til:til_landing' %}" method="post">
+            {% csrf_token %}
+            <label for="tag-input">Tags, separate by commas</label>
+            <input class="til-text-input" type="text" id="tag-input" name="tag-input">
+            <input id="landing-apply-filter-button" type="submit" value="apply filter"/>
+        </form>
+        <form action="{% url 'til:til_landing' %}" method="get">
+            <input id="landing-clear-filter-button" type="submit" value="clear filter"/>
+        </form>
+    </div>
+
+    <P>- - - - - big visual separator here - - - - - </P>
+
+
     <main>
+
+
+
     <aside class="left">
         <ul>
             <li>
@@ -43,21 +62,22 @@
             </li>
         </ul>
     </aside>
+
     <section class="main-links">
     <ul class="learnings-list">
         {% for x in learnings %}
             <li>
                 <p class="read-length">placeholder</p>
-            <p class="read"><a href="{% url 'til_show' x.id %}">{{ x.headline }}</a></p>
+                <p class="read"><a href="{% url 'til:til_show' x.id %}">{{ x.headline }}</a></p>
         <p class="read">
             {% for tag in x.tags %}
-                <a href="/til/tags/{{ tag  }}">{{ tag }}</a>,
+                <a href="{% url "til:til_show_tagged" tagstring=tag %}">{{ tag }}</a></a>,
             {% endfor %}
         </p>
             </li>
         {% endfor %}
     </ul>
     </section>
-    <main>
+    </main>
     </body>
 {% endblock %}
