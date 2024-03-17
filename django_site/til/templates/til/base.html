@@ -3,10 +3,13 @@
 <head>
     <title>{{ page_title }}</title>
     {% load static %}
-<link rel="stylesheet" href="{% static 'django_root/til-style.css' %}">
+    <link rel="stylesheet" href="{% static 'til/til-style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'til/favicon.png' %}">
 </head>
+
 <body>
 {% block page_body %}{% endblock %}
+{% include 'til/til_footer.html' %}
 </body>
 
 </html>
