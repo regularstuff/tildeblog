@@ -2,15 +2,25 @@
 
   *Today I Learned - de blog*
 
+Updated: March 16 2024
+
+[4 min Video with new features]()
+
+This is a learn-to-use-django project. Goal is to create a blog specialized for capturing and presenting
+"Today I Learned" topics (more detail below). Contributions from any skill level are welcome. The open issues are
+listed in github in the usual place.
+
+In addition to Django, the project is about learning to collaborate in github, and we will help new
+contributors get started with git.
+
+[New to Django?](#if-you-are-new-to-django) | [New to Github Collaboration/PRs?](#if-you-are-new-to-github) | [New to Git?](#if-you-are-new-to-git)  | [New to Python?](#if-you-are-new-to-python)
+
+Discussion is on the [Python Study Central Discord Server](https://discord.com/invite/6pVFMUEKxX) (that is
+the invite link.)  The conversation is in channel "tildablog-dev". We try to have occasional voice meetings.
+
 | [How to run on local](#running-on-local) | [Project Goals](#project-goals) |
 
-This is a learn-to-use-django project for the [Python Study Central Discord](https://discord.com/invite/6pVFMUEKxX)
-In addition to Django, the project is about learning git and practicalities of deployment.  Contributions from any skill level are welcome.  
-Djanjo newbies are welcome to join voice discussions.  Coordination, meetups at this [Discord channel](https://discord.com/channels/1200518276023848970/1207695235313049610).
-
-[New to Django?](#if-you-are-new-to-django) | [New to Github Collaboration/PRs?](#if-you-are-new-to-github) | [New to Git?](#if-you-are-new-to-git)  | [New to Python?](#if-you-are-new-to-python) 
-
-You can see it running on Render, and can add stuff to it.  The styling is **very** rough as of March 4.  Render
+You can see tildeblog running on Render, and can add stuff to it. The styling is **very** rough as of March 16. Render
 "spins down" free-plan websites if they aren't accessed frequently, so it is likely to take a minute or so
 to come up if you look at it.   It is at https://tildeblog.onrender.com.
 
@@ -49,33 +59,12 @@ That host lets you run postgres for 90 days. I don't know of any hosting provide
 that lets you run Django indefinitely for free.  You can probably serially run on AWS free
 tier (have to set up a new account every year.)
  
-## requirements / spec
 
- - single author (not a group blog)
- - installable django app
- - article tagging
- - display latex using mathjax or similar
- - flexsearch with live update results (via htmx/alpine.js)
- - has draft queue
- - supports comments and has some spam filter/are you a human challenge
- - quick capture of "seed" from mobile / from discord channel.  So you can remind yourself to write up something you learn
- - "heatmap" similar to github's day/week commit visualization, showing activity over time
- - allow selective feature-by-feature visibility, perhaps by giving a prospective employer a key 
-
-## future (spitballing)
-
-Possible: create a "tildeblog network"  with an engine that discovers collections that seem to
-touch on similar topics as yours.  With the idea being you might be interested in "Today I Learned" stuff from people who've
-thought it worth mentioning certain things.  This would be most useful if there were a protocol not married to django, as
-presumably many people who don't want to run their own django server also learn worthwhile things.
-
-
-
-Feel free to sugges features in Github's "Issues" section.
  
 ## Contributing
 
-If you want to be a collaborator on this, message me (levintennine) in discord.
+If you want to be a collaborator on this, message me (levintennine) in discord. And you can contribute also
+by suggesting features in Github's "Issues" section.
 
 ### If you are new to Django
 
